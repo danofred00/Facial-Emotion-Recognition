@@ -31,6 +31,13 @@ After activate the virtualenv, you should install project dependencies with
 ```
 
 ## How to run the app ?
+
+### What to check before ?
+Before running the app, ensure you have the pretrained model at `packages/backend/model/data/facial_emotion_recognition_model.h5` location.
+
+You can get it at the data location, or you can run the script `train_model.py` to train the model with your own `fer2013` dataset.
+
+### Run the app
 To run it, you should just need to go to the root directory of your project (directory that contains your main.py file and your packages). Then use this command:
 
 ```
