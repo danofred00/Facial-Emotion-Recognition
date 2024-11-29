@@ -3,17 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Détection des Émotions Faciales</title>
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Linking bootstrap -->
+    <link rel="stylesheet" href="./libs/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
+    <script src="./libs/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Welcome to my awesome app</h1>
+    
     <div>
-        <p>Click the button below to see the magic happen</p>
-        <button id="myButton">Click me</button>
-        <div id="content"></div>
+        <header class="p-2 bg-dark text-white text-center">
+            <h1>Détection des Émotions Faciales</h1>
+            <p>
+                Lien du projet : 
+                <a href="https://github.com/danofred00/facial-emotion-recognition.git" target="_blank" title="Voir le code">
+                    https://github.com/danofred00/facial-emotion-recognition.git"
+                </a>
+            </p>
+        </header>
+        <div class="container-fluid row">
+            <div class="col">
+                <!-- Capture image section -->
+                <div class="border p-2">
+                    <h2>Importer une Image</h2>
+
+                    <div class="mb-3">
+                        <label for="fileInput" class="form-label">Choisir une image</label>
+                        <input type="file" class="form-control" id="fileInput">
+                    </div>
+                    <button id="uploadButton" class="btn btn-primary">
+                        Valider l'image
+                    </button>
+
+                    <!-- Error message area -->
+                    <span id="error-image-message" class="alert alert-danger" style="display: none;" role="alert">
+                        Une image est requise
+                    </span>
+                    
+                </div>
+
+                <!-- Capture video section -->
+                <div>
+                    <h2>Utiliser la Webcam</h2>
+                    <video id="video" width="480" height="480" autoplay></video>
+                    <button id="captureButton" class="btn btn-outline-primary">Capturer et Détecter</button>
+                    <canvas id="canvas" class="d-none"></canvas>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Result sections -->
+                <span id="loading-text" style="display: none;">Loading ...</span>
+                <img id="captured-image" width="200" height="auto" alt="The image captured here" />
+                <div>
+                    <h3>Emotions</h3>
+                    <p><b>Start: </b>0.0 <b>End: </b><span class="end-time-result"></span></p>
+                    <div class="col emotions-container">
+                        <div class="mb-3">
+                            <h5>Angry 😧</h5>
+                            <div class="progress" role="progressbar" aria-label="Angry" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Digust </h5>
+                            <div class="progress" role="progressbar" aria-label="Digust" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Fear 😰</h5>
+                            <div class="progress" role="progressbar" aria-label="Fear" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Happy 🥳</h5>
+                            <div class="progress" role="progressbar" aria-label="Happy" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Sad 🥺</h5>
+                            <div class="progress" role="progressbar" aria-label="Sad" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Surprise 😶</h5>
+                            <div class="progress" role="progressbar" aria-label="Surprise" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Neutral 😐</h5>
+                            <div class="progress" role="progressbar" aria-label="Neutral" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="./js/script.js"></script>
+    <script src="./js/api.js"></script>
 </body>
 </html>

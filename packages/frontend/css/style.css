@@ -1,0 +1,13 @@
+
+:root {
+    padding: 0;
+    margin: 0;
+}
+
+.emotion-container .progress-bar {
+    transition: 0.5s;
+}
+
+#captured-image {
+    max-width: 200px;
+}

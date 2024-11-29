@@ -26,7 +26,7 @@ def emotion_map():
     return {
         "data": EMOTION_MAP
     }
-    
+
 
 @router.post('/predict_emotion', response_model=PredictionResult)
 def predict_emotion(image: UploadFile):
